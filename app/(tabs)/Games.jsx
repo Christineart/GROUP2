@@ -5,6 +5,11 @@ const flags = [
   { country: 'Philippines', image: 'https://flagcdn.com/w320/ph.png' },
   { country: 'Japan', image: 'https://flagcdn.com/w320/jp.png' },
   { country: 'Canada', image: 'https://flagcdn.com/w320/ca.png' },
+  { country: 'China', image: 'https://flagcdn.com/w320/cn.png' },
+  { country: 'Finland', image: 'https://flagcdn.com/w320/fi.png' },
+  { country: 'South Korea', image: 'https://flagcdn.com/w320/kr.png' },
+  { country: 'Thailand', image: 'https://flagcdn.com/w320/th.png' },
+  { country: 'Vietnam', image: 'https://flagcdn.com/w320/vn.png' },
 ];
 
 export default function App() {
@@ -61,28 +66,31 @@ export default function App() {
   if (!level) {
     return (
       <View>
-      <View style={{
-      display:'flex',
-      alignItems:'left',
-      marginTop:0,
-      marginLeft:330,
-    }}>
-      <Image source={require('./../../assets/images/logo.png')}
-          style={styles.image}
-      />
-    </View>
-      <View style={styles.container}>
-        <Text style={styles.title}>Choose Difficulty</Text>
-        <TouchableOpacity style={styles.button} onPress={() => startLevel('easy')}>
-          <Text style={styles.buttonText}>Easy</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => startLevel('medium')}>
-          <Text style={styles.buttonText}>Medium</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => startLevel('hard')}>
-          <Text style={styles.buttonText}>Hard</Text>
-        </TouchableOpacity>
-      </View>
+        <View
+          style={{
+            display: 'flex',
+            alignItems: 'left',
+            marginTop: 0,
+            marginLeft: 330,
+          }}
+        >
+          <Image
+            source={require('./../../assets/images/logo.png')}
+            style={styles.image}
+          />
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Choose Difficulty</Text>
+          <TouchableOpacity style={styles.button} onPress={() => startLevel('easy')}>
+            <Text style={styles.buttonText}>Easy</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => startLevel('medium')}>
+            <Text style={styles.buttonText}>Medium</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => startLevel('hard')}>
+            <Text style={styles.buttonText}>Hard</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -94,23 +102,26 @@ export default function App() {
         <View>
           <TouchableOpacity
             style={styles.choiceButton}
-            onPress={() => handleEasyAnswer(flags[currentIndex].country)}>
+            onPress={() => handleEasyAnswer(flags[currentIndex].country)}
+          >
             <Text style={styles.choiceText}>{flags[currentIndex].country}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.choiceButton}
-            onPress={() => handleEasyAnswer('Wrong Choice')}>
+            onPress={() => handleEasyAnswer('Wrong Choice')}
+          >
             <Text style={styles.choiceText}>Wrong Choice</Text>
           </TouchableOpacity>
         </View>
       )}
       {level === 'medium' && (
         <View>
-          {['Philippines', 'Japan', 'Canada', 'USA', 'Brazil'].map((choice, index) => (
+          {['Philippines', 'Japan', 'Canada', 'China', 'Finland', 'South Korea', 'Thailand', 'Vietnam'].map((choice, index) => (
             <TouchableOpacity
               key={index}
               style={styles.choiceButton}
-              onPress={() => handleMediumAnswer(choice)}>
+              onPress={() => handleMediumAnswer(choice)}
+            >
               <Text style={styles.choiceText}>{choice}</Text>
             </TouchableOpacity>
           ))}
@@ -135,9 +146,9 @@ export default function App() {
 
 const styles = StyleSheet.create({
   image: {
-    width:100,
-    height:100,
-},
+    width: 100,
+    height: 100,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
