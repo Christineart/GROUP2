@@ -66,16 +66,13 @@ export default function App() {
   if (!level) {
     return (
       <View>
-        <View
-          style={{
-            display: 'flex',
-            alignItems: 'left',
-            marginTop: 0,
-            marginLeft: 330,
-          }}
-        >
-          <Image
-            source={require('./../../assets/images/logo.png')}
+        <View style={{
+          display: 'flex',
+          alignItems: 'left',
+          marginTop: 0,
+          marginLeft: 330,
+        }}>
+          <Image source={require('./../../assets/images/logo.png')}
             style={styles.image}
           />
         </View>
@@ -102,29 +99,49 @@ export default function App() {
         <View>
           <TouchableOpacity
             style={styles.choiceButton}
-            onPress={() => handleEasyAnswer(flags[currentIndex].country)}
-          >
+            onPress={() => handleEasyAnswer(flags[currentIndex].country)}>
             <Text style={styles.choiceText}>{flags[currentIndex].country}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.choiceButton}
-            onPress={() => handleEasyAnswer('Wrong Choice')}
-          >
-            <Text style={styles.choiceText}>Wrong Choice</Text>
+            onPress={() => handleEasyAnswer('Wrong Choice')}>
+            <Text style={styles.choiceText}>{flags[(currentIndex + 1) % flags.length].country}</Text>
           </TouchableOpacity>
         </View>
       )}
       {level === 'medium' && (
-        <View>
-          {['Philippines', 'Japan', 'Canada', 'China', 'Finland', 'South Korea', 'Thailand', 'Vietnam'].map((choice, index) => (
+        <View style={styles.mediumContainer}>
+          <View style={styles.row}>
             <TouchableOpacity
-              key={index}
               style={styles.choiceButton}
-              onPress={() => handleMediumAnswer(choice)}
-            >
-              <Text style={styles.choiceText}>{choice}</Text>
+              onPress={() => handleMediumAnswer('Philippines')}>
+              <Text style={styles.choiceText}>Philippines</Text>
             </TouchableOpacity>
-          ))}
+            <TouchableOpacity
+              style={styles.choiceButton}
+              onPress={() => handleMediumAnswer('Japan')}>
+              <Text style={styles.choiceText}>Japan</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={styles.choiceButton}
+              onPress={() => handleMediumAnswer('Canada')}>
+              <Text style={styles.choiceText}>Canada</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.choiceButton}
+              onPress={() => handleMediumAnswer('China')}>
+              <Text style={styles.choiceText}>China</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.singleRow}>
+            <TouchableOpacity
+              style={styles.choiceButton}
+              onPress={() => handleMediumAnswer('Finland')}>
+              <Text style={styles.choiceText}>Finland</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       )}
       {level === 'hard' && (
@@ -201,5 +218,18 @@ const styles = StyleSheet.create({
   submitText: {
     color: 'white',
     fontSize: 16,
+  },
+  mediumContainer: {
+    width: '100%',
+    paddingHorizontal: 20,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginBottom: 10,
+  },
+  singleRow: {
+    alignItems: 'center',
+    marginTop: 10,
   },
 });
