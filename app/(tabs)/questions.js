@@ -49,4 +49,9 @@ export const quizData = [
         options: ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "Albert Einstein"],
         answer: "Alexander Graham Bell"
     },
+    {
+        question: "Who JM",
+        options: ["Tejada", "tej", "Nikola Tesla", "Albert Einstein"],
+        answer: "Tejada"
+    },
 ]
