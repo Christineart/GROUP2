@@ -1,57 +1,57 @@
 export const quizData = [
     {
-        question: "What is the capital of Canada?",
-        options: ["Ottawa", "Toronto", "Calgary", "Edmonton"],
-        answer: "Ottawa"
+        question: "What is the currency of Spain?",
+        options: ["Euro", "Peso", "Manat", "Won"],
+        answer: "Euro",
     },
     {
-        question: "What is the chemical symbol for water?",
-        options: ["H2O", "CO2", "NaCl", "O2"],
-        answer: "H2O"
+        question: "Pyongyang is the capital of which of the following country?",
+        options: ["North Korea", "South Korea", "Laos", "Denmark"],
+        answer: "North Korea",
     },
     {
-        question: "Who wrote 'To Kill a Mockingbird'?",
-        options: ["Harper Lee", "Mark Twain", "J.K. Rowling", "Stephen King"],
-        answer: "Harper Lee"
+        question: "Rome is the capital of'?",
+        options: ["Germany", "Russia", "Italy", "Australia"],
+        answer: "Italy",
     },
     {
-        question: "Which planet is known as the 'Red Planet'?",
-        options: ["Mars", "Venus", "Jupiter", "Mercury"],
-        answer: "Mars"
+        question: "The national currency of India is",
+        options: ["Rupiah", "Rupee", "Yuan", "Yen"],
+        answer: "Rupee",
     },
     {
-        question: "Who painted the Mona Lisa?",
-        options: ["Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh", "Claude Monet"],
-        answer: "Leonardo da Vinci"
+        question: "What is the national currency of the United States of America (USA)?",
+        options: ["Yen", "Rand", "Dollar", "Euro"],
+        answer: "Dollar",
     },
     {
         question: "What is the capital of Japan?",
         options: ["Beijing", "Seoul", "Tokyo", "Bangkok"],
-        answer: "Tokyo"
+        answer: "Tokyo",
     },
     {
-        question: "Who is the author of '1984'?",
-        options: ["George Orwell", "Aldous Huxley", "Ray Bradbury", "J.R.R. Tolkien"],
-        answer: "George Orwell"
+        question: "What is the national language of the Philippines?",
+        options: ["English", "Spanish", "Filipino", "Tagalog"],
+        answer: "Filipino",
     },
     {
-        question: "What is the largest organ in the human body?",
-        options: ["Liver", "Heart", "Skin", "Lung"],
-        answer: "Skin"
+        question: "What is the currency of South Korea",
+        options: ["Peso", "Won", "Dollars", "Euro"],
+        answer: "",
     },
     {
-        question: "Which continent is the largest by land area?",
-        options: ["Asia", "Africa", "North America", "Europe"],
-        answer: "Asia"
+        question: "",
+        options: ["", "", "", ""],
+        answer: "",
     },
     {
-        question: "Who invented the telephone?",
-        options: ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "Albert Einstein"],
-        answer: "Alexander Graham Bell"
+        question: "",
+        options: ["", "", "", ""],
+        answer: "",
     },
     {
-        question: "Who JM",
-        options: ["Tejada", "tej", "Nikola Tesla", "Albert Einstein"],
-        answer: "Tejada"
+        question: "",
+        options: ["", "", "", ""],
+        answer: "",
     },
 ]

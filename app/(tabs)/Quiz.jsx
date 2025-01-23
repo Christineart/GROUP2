@@ -5,15 +5,27 @@ import { quizData } from '../../components/questions';
 import Option from '../../components/Option'; // Import the Option component
 import Results from '../../components/Results';
 
+// Fisher-Yates shuffle function to randomize the questions
+const shuffleArray = (array) => {
+  const shuffledArray = [...array];
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]]; // Swap elements
+  }
+  return shuffledArray;
+};
+
 export default function Quiz() {
-  const [questions] = useState(quizData); // Load quiz data directly
+  const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
   const [showResult, setShowResult] = useState(false);
-  const [percentageComplete, setPercentageComplete] = useState(0);
 
-  // Update progress bar as question changes
+  // Shuffle questions when the component is mounted or when restarting the quiz
+  useEffect(() => {
+    setQuestions(shuffleArray(quizData)); // Shuffle questions when the quiz starts or restarts
+  }, []);
 
   const handleNext = () => {
     const correctAnswer = questions[currentQuestionIndex].answer;
@@ -35,6 +47,7 @@ export default function Quiz() {
     setCurrentQuestionIndex(0);
     setShowResult(false);
     setSelectedOption(""); // Reset selection on restart
+    setQuestions(shuffleArray(quizData)); // Shuffle questions on restart
   };
 
   if (showResult) {
@@ -54,7 +67,6 @@ export default function Quiz() {
         </View>
 
         <View style={styles.questionwrapper}>
-
           <Text style={{ fontWeight: "500", textAlign: "center" }}>
             {currentQuestion.question}
           </Text>
