@@ -9,8 +9,12 @@ export default function About() {
 
       {/* Quick Overview */}
       <Text style={styles.overview}>
-        Welcome to our app! This app is designed to help you with learning different flags and its own currency and language.
-        Our goal is to provide a seamless and user-friendly experience tailored to your needs.
+      Welcome to our app! We're thrilled to have you here. This app is thoughtfully designed to assist you in learning and recognizing the flags of different countries from all over the world. Whether you're a student, a trivia enthusiast, or simply someone curious about global cultures, our app is here to make your learning journey both enjoyable and rewarding.
+Our goal is to provide a seamless, interactive, and user-friendly experience tailored to your interests and learning needs. Dive into the fascinating world of flags with a variety of engaging features, including quizzes, fun facts, and historical insights about each flag.
+We believe that learning should be exciting, and we’ve worked hard to create an app that’s not only educational but also entertaining. Expand your knowledge, challenge yourself, and impress your friends with your newfound expertise in world flags!
+Thank you for choosing our app, and we can’t wait for you to explore everything we’ve prepared for you. Let’s get started on this exciting adventure together! 🌍✨
+
+
       </Text>
 
       {/* "About the Developers" Section */}
@@ -22,7 +26,7 @@ export default function About() {
             source={require('./../../assets/images/tine.png')} 
             style={styles.profileImage} 
           />
-          <Text style={styles.cardName}>Developer 1</Text>
+          <Text style={styles.cardName}>Christine Artucilla</Text>
           <Text style={styles.cardInfo}>Frontend Developer. Passionate about creating user-friendly interfaces.</Text>
         </View>
 
@@ -32,17 +36,17 @@ export default function About() {
             source={require('./../../assets/images/becca.png')} 
             style={styles.profileImage} 
           />
-          <Text style={styles.cardName}>Developer 2</Text>
+          <Text style={styles.cardName}>Rebecca Baja</Text>
           <Text style={styles.cardInfo}>Backend Developer. Enjoys solving complex problems and building robust systems.</Text>
         </View>
 
         {/* Developer Card 3 */}
         <View style={styles.card}>
           <Image 
-            source={require('./../../assets/images/favicon.png')} 
+            source={require('./../../assets/images/jm.png')} 
             style={styles.profileImage} 
           />
-          <Text style={styles.cardName}>Developer 3</Text>
+          <Text style={styles.cardName}>JM Tejada</Text>
           <Text style={styles.cardInfo}>Mobile Developer. Focused on crafting intuitive and seamless mobile experiences.</Text>
         </View>
 
@@ -52,7 +56,7 @@ export default function About() {
             source={require('./../../assets/images/FINALNAJANROLD.png')} 
             style={styles.profileImage} 
           />
-          <Text style={styles.cardName}>Developer 4</Text>
+          <Text style={styles.cardName}>Janrold Deguinto</Text>
           <Text style={styles.cardInfo}>UI/UX Designer. Dedicated to designing visually appealing and accessible designs.</Text>
         </View>
       </View>
