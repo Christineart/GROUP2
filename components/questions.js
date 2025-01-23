@@ -37,21 +37,16 @@ export const quizData = [
     {
         question: "What is the currency of South Korea",
         options: ["Peso", "Won", "Dollars", "Euro"],
-        answer: "",
+        answer: "Won",
     },
     {
-        question: "",
-        options: ["", "", "", ""],
-        answer: "",
+        question: "What is the capital of Thailand?",
+        options: ["Hanoi", "Manila", "Bangkok", "Vientiane"],
+        answer: "Bangkok",
     },
     {
-        question: "",
-        options: ["", "", "", ""],
-        answer: "",
+        question: "What is the capital of China?",
+        options: ["Tokyo", "New Delhi", "Beijing", "Manila"],
+        answer: "Beijing",
     },
-    {
-        question: "",
-        options: ["", "", "", ""],
-        answer: "",
-    },  
 ]

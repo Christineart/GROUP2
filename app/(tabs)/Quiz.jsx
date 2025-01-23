@@ -50,8 +50,18 @@ export default function Quiz() {
     setQuestions(shuffleArray(quizData)); // Shuffle questions on restart
   };
 
+  // Handle the case where questions are not yet loaded
   if (showResult) {
     return <Results restart={restart} score={score} />;
+  }
+
+  // Ensure we only access questions when they are loaded
+  if (!questions.length) {
+    return (
+      <View style={styles.container}>
+        <Text>Loading...</Text> {/* Display loading message until questions are available */}
+      </View>
+    );
   }
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -67,7 +77,7 @@ export default function Quiz() {
         </View>
 
         <View style={styles.questionwrapper}>
-          <Text style={{ fontWeight: "500", textAlign: "center" }}>
+          <Text style={styles.questionText}>
             {currentQuestion.question}
           </Text>
         </View>
@@ -112,31 +122,23 @@ const styles = StyleSheet.create({
   questionwrapper: {
     marginTop: 60,
     width: '100%',
-    height: 180,
-    borderRadius: 20,
     backgroundColor: '#fff',
-    padding: 80,
+    paddingHorizontal: 20,
+    paddingVertical: 15, // Adjusted for better spacing
+    borderRadius: 20,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.4,
     shadowRadius: 5,
     alignItems: 'center',
-  },
-  progresscount: {
-    height: 58,
-    width: 58,
-    borderRadius: 50,
-    backgroundColor: '#fff',
-    zIndex: 10,
-    position: 'absolute',
-    top: 6,
-    alignItems: 'center',
     justifyContent: 'center',
   },
-  percentage: {
-    fontWeight: '600',
-    fontSize: 18,
-    color: '#004643',
+  questionText: {
+    fontWeight: "500",
+    textAlign: "center",
+    fontSize: 18,  // Adjusted font size for readability
+    color: '#333', // Slightly darker color for contrast
+    lineHeight: 24, // Increased line height to make text more readable
   },
   optionswrapper: {
     marginTop: 40,
