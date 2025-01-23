@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { quizData } from './questions';
-import Option from './Option'; // Import the Option component
-import Results from './Results';
+import { quizData } from '../../components/questions';
+import Option from '../../components/Option'; // Import the Option component
+import Results from '../../components/Results';
 
 export default function Quiz() {
   const [questions] = useState(quizData); // Load quiz data directly
@@ -14,9 +14,6 @@ export default function Quiz() {
   const [percentageComplete, setPercentageComplete] = useState(0);
 
   // Update progress bar as question changes
-  const updateProgress = () => {
-    setPercentageComplete(((currentQuestionIndex + 1) / questions.length) * 100);
-  };
 
   const handleNext = () => {
     const correctAnswer = questions[currentQuestionIndex].answer;
@@ -57,12 +54,6 @@ export default function Quiz() {
         </View>
 
         <View style={styles.questionwrapper}>
-          <View style={styles.progresswrapper}>
-            <View style={[styles.progressBar, { width: `${percentageComplete}%` }]}></View>
-            <View style={styles.progresscount}>
-              <Text style={styles.percentage}>{Math.floor(percentageComplete)}%</Text>
-            </View>
-          </View>
 
           <Text style={{ fontWeight: "500", textAlign: "center" }}>
             {currentQuestion.question}
@@ -112,28 +103,12 @@ const styles = StyleSheet.create({
     height: 180,
     borderRadius: 20,
     backgroundColor: '#fff',
-    padding: 16,
+    padding: 80,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.4,
     shadowRadius: 5,
     alignItems: 'center',
-  },
-  progresswrapper: {
-    width: 70,
-    height: 70,
-    backgroundColor: '#ABD1C6',
-    borderRadius: 50,
-    alignItems: 'center',
-    overflow: 'hidden',
-    position: 'relative',
-    marginBottom: 30,
-    marginTop: -50,
-  },
-  progressBar: {
-    height: '100%',
-    backgroundColor: '#004643',
-    alignSelf: 'flex-end',
   },
   progresscount: {
     height: 58,
