@@ -9,7 +9,7 @@ export default function About() {
 
       {/* Quick Overview */}
       <Text style={styles.overview}>
-        Welcome to our app! This app is designed to help you with [app purpose].
+        Welcome to our app! This app is designed to help you with learning different flags and its own currency and language.
         Our goal is to provide a seamless and user-friendly experience tailored to your needs.
       </Text>
 
@@ -19,7 +19,7 @@ export default function About() {
         {/* Developer Card 1 */}
         <View style={styles.card}>
           <Image 
-            source={require('./../../assets/images/dev1.png')} 
+            source={require('./../../assets/images/tine.png')} 
             style={styles.profileImage} 
           />
           <Text style={styles.cardName}>Developer 1</Text>
@@ -29,7 +29,7 @@ export default function About() {
         {/* Developer Card 2 */}
         <View style={styles.card}>
           <Image 
-            source={require('./../../assets/images/dev2.png')} 
+            source={require('./../../assets/images/becca.png')} 
             style={styles.profileImage} 
           />
           <Text style={styles.cardName}>Developer 2</Text>
@@ -39,7 +39,7 @@ export default function About() {
         {/* Developer Card 3 */}
         <View style={styles.card}>
           <Image 
-            source={require('./../../assets/images/dev3.png')} 
+            source={require('./../../assets/images/favicon.png')} 
             style={styles.profileImage} 
           />
           <Text style={styles.cardName}>Developer 3</Text>
@@ -49,7 +49,7 @@ export default function About() {
         {/* Developer Card 4 */}
         <View style={styles.card}>
           <Image 
-            source={require('./../../assets/images/dev4.png')} 
+            source={require('./../../assets/images/FINALNAJANROLD.png')} 
             style={styles.profileImage} 
           />
           <Text style={styles.cardName}>Developer 4</Text>

@@ -1,15 +1,19 @@
+import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const Results = ({ score, restart }: { score: number, restart: () => void }) => {
+const Results = ({ score, restart }: { score: number; restart: () => void }) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        <Text style={{ fontWeight: "600", fontSize: 16, color: "#004643" }}>Quiz Complete</Text>
-
-        <Text style={{ marginVertical: 20, fontWeight: "500" }}>You scored:</Text>
-
-        <Text style={{ fontWeight: "700", fontSize: 16, color: "#004643" }}>{score}/10</Text>
-
+        <Text style={{ fontWeight: "600", fontSize: 16, color: "#004643" }}>
+          Quiz Complete
+        </Text>
+        <Text style={{ marginVertical: 20, fontWeight: "500" }}>
+          You scored:
+        </Text>
+        <Text style={{ fontWeight: "700", fontSize: 16, color: "#004643" }}>
+          {score}/{score === 0 ? 1 : 10} {/* Change to reflect out of X dynamically */}
+        </Text>
         <TouchableOpacity onPress={restart} activeOpacity={0.8} style={styles.btn}>
           <Text>Restart</Text>
         </TouchableOpacity>

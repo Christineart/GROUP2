@@ -18,6 +18,10 @@ export default function Quiz() {
     setPercentageComplete(((currentQuestionIndex + 1) / questions.length) * 100);
   };
 
+  useEffect(() => {
+    updateProgress(); // Call the function to update progress whenever the currentQuestionIndex changes
+  }, [currentQuestionIndex]);
+
   const handleNext = () => {
     const correctAnswer = questions[currentQuestionIndex].answer;
 
@@ -55,20 +59,17 @@ export default function Quiz() {
             {currentQuestionIndex + 1}/{questions.length}
           </Text>
         </View>
-
         <View style={styles.questionwrapper}>
           <View style={styles.progresswrapper}>
-            <View style={[styles.progressBar, { width: `${percentageComplete}%` }]}></View>
+            <View style={[styles.progressBar, { width: `${percentageComplete}%` }]} />
             <View style={styles.progresscount}>
               <Text style={styles.percentage}>{Math.floor(percentageComplete)}%</Text>
             </View>
           </View>
-
           <Text style={{ fontWeight: "500", textAlign: "center" }}>
             {currentQuestion.question}
           </Text>
         </View>
-
         <View style={styles.optionswrapper}>
           {currentQuestion.options.map((option, index) => (
             <Option
@@ -76,11 +77,9 @@ export default function Quiz() {
               option={option}
               isSelected={selectedOption === option}
               checkIfSelected={() => setSelectedOption(option)}
-              setSelectedOption={setSelectedOption}
             />
           ))}
         </View>
-
         <TouchableOpacity
           onPress={handleNext}
           activeOpacity={0.8}
@@ -94,7 +93,7 @@ export default function Quiz() {
   );
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#e4e4e4',
