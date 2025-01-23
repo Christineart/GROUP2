@@ -1,16 +1,7 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-  TextInput,
-  Alert,
-  ScrollView,
-} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput, Alert, ScrollView } from 'react-native';
 
-const flags = [
+const allFlags = [
   { country: 'Philippines', image: 'https://flagcdn.com/w320/ph.png' },
   { country: 'Japan', image: 'https://flagcdn.com/w320/jp.png' },
   { country: 'Canada', image: 'https://flagcdn.com/w320/ca.png' },
@@ -35,38 +26,51 @@ const flags = [
 
 export default function App() {
   const [level, setLevel] = useState(null);
+  const [flags, setFlags] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [wrongAnswers, setWrongAnswers] = useState(0);
   const [userInput, setUserInput] = useState('');
+
+  const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
 
   const startLevel = (chosenLevel) => {
     setLevel(chosenLevel);
+    const shuffledFlags = shuffleArray([...allFlags]);
+    setFlags(shuffledFlags);
     setCurrentIndex(0);
     setScore(0);
-    setWrongAnswers(0);
     setUserInput('');
   };
 
-  const endLevel = () => {
-    Alert.alert(
-      'Level Complete!',
-      `You scored ${score} correct and made ${wrongAnswers} mistakes.`,
-      [{ text: 'OK', onPress: () => setLevel(null) }]
-    );
+  const handleAnswer = (choice) => {
+    if (choice === flags[currentIndex].country) {
+      const newScore = score + 1;
+      setScore(newScore);
+
+      if (currentIndex + 1 < flags.length) {
+        setCurrentIndex(currentIndex + 1);
+      } else {
+        Alert.alert('Congratulations!', `You scored ${newScore}!`);
+        setLevel(null);
+      }
+    } else {
+      Alert.alert('Wrong Answer!', 'Try again.');
+    }
   };
 
-  const handleAnswer = (choice, correctAnswer) => {
-    if (choice === correctAnswer) {
-      setScore(score + 1);
-    } else {
-      setWrongAnswers(wrongAnswers + 1);
-    }
+  const handleHardAnswer = () => {
+    if (userInput.toLowerCase() === flags[currentIndex].country.toLowerCase()) {
+      const newScore = score + 1;
+      setScore(newScore);
 
-    if (currentIndex + 1 < flags.length) {
-      setCurrentIndex(currentIndex + 1);
+      if (currentIndex + 1 < flags.length) {
+        setCurrentIndex(currentIndex + 1);
+      } else {
+        Alert.alert('Congratulations!', `You scored ${newScore}!`);
+        setLevel(null);
+      }
     } else {
-      endLevel();
+      Alert.alert('Wrong Answer!', 'Try again.');
     }
   };
 
@@ -87,19 +91,19 @@ export default function App() {
     );
   }
 
-  const mediumChoices = [
-    ...flags
-      .filter((_, index) => index !== currentIndex)
-      .map((flag) => flag.country)
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 3),
-    flags[currentIndex].country,
-  ].sort(() => Math.random() - 0.5);
+  const mediumChoices = shuffleArray(
+    [...flags.map((flag) => flag.country)].filter(
+      (country) => country !== flags[currentIndex].country
+    )
+  ).slice(0, 3);
 
-  const easyChoices = [
+  mediumChoices.push(flags[currentIndex].country);
+  shuffleArray(mediumChoices);
+
+  const easyChoices = shuffleArray([
     flags[currentIndex].country,
     flags[(currentIndex + 1) % flags.length].country,
-  ].sort(() => Math.random() - 0.5);
+  ]);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -107,16 +111,14 @@ export default function App() {
         <Text style={styles.backButtonText}>Back</Text>
       </TouchableOpacity>
       <Image source={{ uri: flags[currentIndex].image }} style={styles.flag} />
-      <Text style={styles.score}>
-        Score: {score} | Mistakes: {wrongAnswers}
-      </Text>
+      <Text style={styles.score}>Score: {score}</Text>
       {level === 'easy' && (
         <View style={styles.easyChoicesContainer}>
           {easyChoices.map((choice, index) => (
             <TouchableOpacity
               key={index}
               style={styles.choiceButtonEasy}
-              onPress={() => handleAnswer(choice, flags[currentIndex].country)}
+              onPress={() => handleAnswer(choice)}
             >
               <Text style={styles.choiceText}>{choice}</Text>
             </TouchableOpacity>
@@ -129,7 +131,7 @@ export default function App() {
             <TouchableOpacity
               key={index}
               style={styles.choiceButtonMedium}
-              onPress={() => handleAnswer(choice, flags[currentIndex].country)}
+              onPress={() => handleAnswer(choice)}
             >
               <Text style={styles.choiceText}>{choice}</Text>
             </TouchableOpacity>
@@ -144,10 +146,7 @@ export default function App() {
             value={userInput}
             onChangeText={setUserInput}
           />
-          <TouchableOpacity
-            style={styles.submitButton}
-            onPress={() => handleAnswer(userInput.trim(), flags[currentIndex].country)}
-          >
+          <TouchableOpacity style={styles.submitButton} onPress={handleHardAnswer}>
             <Text style={styles.submitText}>Submit</Text>
           </TouchableOpacity>
         </View>

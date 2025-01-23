@@ -53,5 +53,5 @@ export const quizData = [
         question: "",
         options: ["", "", "", ""],
         answer: "",
-    },
+    },  
 ]
