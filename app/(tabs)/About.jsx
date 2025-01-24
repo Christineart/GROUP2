@@ -9,7 +9,7 @@ export default function About() {
 
       {/* Quick Overview */}
       <Text style={styles.overview}>
-        Welcome to our app! This app is designed to help you with [app purpose].
+        Welcome to Wander World! This app is designed to help you wander the world through our feature flags, currencies, and languages of different countries.
         Our goal is to provide a seamless and user-friendly experience tailored to your needs.
       </Text>
 
@@ -22,7 +22,7 @@ export default function About() {
             source={require('../../assets/images/dev1.png')} 
             style={styles.profileImage} 
           />
-          <Text style={styles.cardName}>Developer 1</Text>
+          <Text style={styles.cardName}>Rebecca Baja</Text>
           <Text style={styles.cardInfo}>Frontend Developer. Passionate about creating user-friendly interfaces.</Text>
         </View>
 
@@ -32,7 +32,7 @@ export default function About() {
             source={require('../../assets/images/dev2.png')} 
             style={styles.profileImage} 
           />
-          <Text style={styles.cardName}>Developer 2</Text>
+          <Text style={styles.cardName}>Christine Artucilla</Text>
           <Text style={styles.cardInfo}>Backend Developer. Enjoys solving complex problems and building robust systems.</Text>
         </View>
 
@@ -42,7 +42,7 @@ export default function About() {
             source={require('../../assets/images/dev3.png')} 
             style={styles.profileImage} 
           />
-          <Text style={styles.cardName}>Developer 3</Text>
+          <Text style={styles.cardName}>JM Tejada</Text>
           <Text style={styles.cardInfo}>Mobile Developer. Focused on crafting intuitive and seamless mobile experiences.</Text>
         </View>
 
@@ -52,7 +52,7 @@ export default function About() {
             source={require('../../assets/images/dev4.png')} 
             style={styles.profileImage} 
           />
-          <Text style={styles.cardName}>Developer 4</Text>
+          <Text style={styles.cardName}>Janrold De Guinto</Text>
           <Text style={styles.cardInfo}>UI/UX Designer. Dedicated to designing visually appealing and accessible designs.</Text>
         </View>
       </View>
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#1a1a1a', // Dark background for contrast
     padding: 20,
+    paddingTop: 50,
   },
   heading: {
     fontSize: 24,
